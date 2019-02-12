@@ -1,14 +1,23 @@
 <h2><%= @task.title %></h2>
 
 <p><%= @task.details %></p>
-
-<% if @task.completed %>
+<div>
+  <% if @task.completed %>
     <input type="checkbox" onclick= 'return false ' id="<%= @task.title %>" checked>
-    <label for="<%= @task.title %>">This tasks ic completed</label>
+    <label for="<%= @task.title %>">This task is completed</label>
     <% else %>
        <input type="checkbox" onclick= 'return false ' id="<%= @task.title %>">
-    <label for="<%= @task.title %>"></label>
-<% end %>
-
-
+    <label for="<%= @task.title %>">This task is not completed yet</label>
+  <% end %>
+</div>
+<div>
+  <%= link_to 'Edit this task', edit_path %>
+</div>
+<div>
+<%= link_to "Delete", delete_path(@task),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %>
+</div>
+<div>
 <%= link_to 'Back to List', tasks_path %>
+</div>
